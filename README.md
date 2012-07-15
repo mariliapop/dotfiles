@@ -1,4 +1,4 @@
-nal bindings
+Terminal bindings
 =================
 
 * `Ctrl-a` - Move to the start of the line.
