@@ -1,0 +1,1 @@
+/Volumes/Users/hdoria/.git-completion.bash
