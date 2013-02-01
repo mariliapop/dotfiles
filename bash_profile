@@ -1,11 +1,16 @@
-export PATH="$PATH:/usr/local/mysql/bin"
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# git and related stuff
+source ~/.git-completion.bash
 
 function parse_git_branch {
 	ref=$(git symbolic-ref HEAD 2> /dev/null) || return
 	echo "("${ref#refs/heads/}")"
 }
-
-source ~/.git-completion.bash
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -38,6 +43,9 @@ export PS1='\n[\u] \[\033[1;33m\]\w\a\[\033[0m\] $(parse_git_branch)\n\$ '
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="4;33"
 
+# add MySQL PATH
+export PATH="$PATH:/usr/local/mysql/bin"
+
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
@@ -56,3 +64,5 @@ LIGHT_RED="\[\033[1;31m\]"
 RED="\[\033[0;31m\]"
 WHITE="\[\033[1;37m\]"
 YELLOW="\[\033[0;33m\]"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
